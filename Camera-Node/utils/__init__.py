@@ -1,2 +1,2 @@
-from .Server import Server
+from .Camera import Camera
 from .Console import Console

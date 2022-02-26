@@ -1,1 +1,2 @@
-import re
+class Camera:
+    pass
