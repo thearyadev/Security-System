@@ -14,13 +14,18 @@ class Renderable(View):
         super().__init__(name=self.__class__.__name__, server=server)
         self.add_url_rule("/", view_func=self.dashboard)
         self.add_url_rule("/login", view_func=self.login)
+        self.add_url_rule("/account", view_func=self.account)
 
     @instancemethod
     @login_required
     def dashboard(self):
-        print(current_user)
-        return render_template("dashboard.html")
+        return render_template("dashboard.html", user=current_user.to_dict())
 
     @instancemethod
     def login(self):
         return render_template("login.html")
+
+    @instancemethod
+    @login_required
+    def account(self):
+        return render_template("account.html", user=current_user.to_dict())

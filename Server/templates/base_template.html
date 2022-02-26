@@ -118,15 +118,15 @@
             <div class="user d-inline-block">
                 <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="name">Sarah Kortney</span>
+                    <span class="name">{{ user.username }}</span>
                     <span>
-                        <img alt="Profile Picture" src="img/profiles/PFP.jpg" />
+                        <img alt="Profile Picture" src="img/profiles/{{ user.picture }}" />
                     </span>
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right mt-3">
-                    <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">Sign out</a>
+                    <a class="dropdown-item" href="{{url_for('Renderable.account')}}">Account</a>
+                    <a class="dropdown-item" href="{{ url_for('API.logout') }}">Sign out</a>
                 </div>
             </div>
         </div>
@@ -135,23 +135,23 @@
         <div class="main-menu">
             <div class="scroll">
                 <ul class="list-unstyled">
-                    <li>
-                        <a href="#ui">
+                    <li class="{% block dashboard_active %}{% endblock %}">
+                        <a href="/">
                             <i class="iconsminds-dashboard"></i> Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="#ui">
+                    <li class="{% block feeds_active %}{% endblock %}">
+                        <a href="#">
                             <i class="iconsminds-film-video"></i> All Feeds
                         </a>
                     </li>
-                    <li>
-                        <a href="#layouts">
+                    <li class="{% block nodes_active %}{% endblock %}">
+                        <a href="#">
                             <i class="iconsminds-camera-3"></i> Nodes
                         </a>
                     </li>
-                    <li>
-                        <a href="#applications">
+                    <li class="{% block settings_active %}{% endblock %}">
+                        <a href="#">
                             <i class="simple-icon-settings"></i> Server Settings
                         </a>
                     </li>
@@ -669,6 +669,7 @@
     <script src="{{ url_for('API.static', path='js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('API.static', path='js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('API.static', path='js/vendor/Chart.bundle.min.js') }}"></script>
+    <script src="{{url_for('API.static', path='js/vendor/dropzone.min.js') }}"></script>
     <script src="{{ url_for('API.static', path='js/vendor/chartjs-plugin-datalabels.js') }}"></script>
     <script src="{{ url_for('API.static', path='js/vendor/moment.min.js') }}"></script>
     <script src="{{ url_for('API.static', path='js/vendor/fullcalendar.min.js') }}"></script>

@@ -1,0 +1,69 @@
+{% extends "base_template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('API.static', path='css/vendor/dropzone.min.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Account Settings</h1>
+                <div class="separator mb-5"></div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>Profile Picture</h5>
+
+
+                        <div class="card-body">
+                            <div class="text-center"><img alt="Profile" src="img/profiles/{{user.picture}}"
+                                                          class="img-thumbnail border-0 rounded-circle mb-4 list-thumbnail" style="height: 35vh">
+                                <p class="list-item-heading mb-1">{{user.username}}</p>
+                                <p class="mb-4 text-muted text-small">Administrator</p>
+                            </div>
+                        </div>
+
+
+                        <form action="{{url_for('API.set_profile_picture')}}" method="post"
+                              enctype="multipart/form-data" id="upload-form">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <input type="file" id="pfp-upload" name="pfp-upload" accept="image/*">
+                                    <label class="custom-file-label" id='upl' for="pfp-upload">Choose file</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mb-1 center mt-3" style="width: 100%;" type="submit">Upload
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+    $(document).ready(
+        function () {
+            $("#pfp-upload").change(
+                function () {
+                    let filename = $("#pfp-upload").val().split("\\")
+                    $("#upl").text(filename[filename.length - 1]);
+                    // $("#upload-form").submit();
+
+                })
+        }
+    )
+</script>
+
+{% endblock %}

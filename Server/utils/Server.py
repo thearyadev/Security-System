@@ -40,6 +40,9 @@ class Server(Flask):
             def __repr__(self):
                 return f"User('{self.id}', '{self.username}', '{self.password}', '{self.picture}')"
 
+            def to_dict(self):
+                return {"id": self.id, "username": self.username, "picture": self.picture}
+
         self.User = User  # class reference
 
         try:  # create db
