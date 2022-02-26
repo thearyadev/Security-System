@@ -11,7 +11,6 @@ class Console(rich_console):
         self.log(
             f"[blue][{self.__get_time__()}][/blue] [bold][yellow][SERVER][/bold][/yellow]", *objects)
 
-
     def info_log(self, *objects):
         self.log(
             f"[blue][{self.__get_time__()}][/blue] [bold][magenta][INFO][/bold][/magenta]", *objects)

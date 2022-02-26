@@ -4,7 +4,7 @@ from utils import Console
 
 def main():
     server = Server()
-    server.run()
+    server.start("0.0.0.0", 80)
 
 
 if __name__ == "__main__":
