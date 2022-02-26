@@ -1,3 +1,5 @@
+from _testcapi import instancemethod
+
 from .ParentView import View
 from typing import TYPE_CHECKING
 

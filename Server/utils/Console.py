@@ -1,11 +1,13 @@
 from rich.console import Console as rich_console
 from datetime import datetime
+import os
 
 
 class Console(rich_console):
     def __init__(self):
-        super().__init__(log_time=False, log_path=False,)
+        super().__init__(log_time=False, log_path=False, )
         self.root_console = super(self.__class__, self)
+        os.system("cls")
 
     def server_log(self, *objects):
         self.log(
